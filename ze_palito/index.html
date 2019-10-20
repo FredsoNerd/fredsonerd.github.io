@@ -1,27 +1,7 @@
 <!doctype html>
 <html>
 <head>
-  <style>
-    *{
-      padding: 0;
-    }
-    svg{
-      background-color: #f0f0f0;
-      width: 70%;
-      float: left;
-    }
-    controle{
-      width: 20%;
-      float: left;
-    }
-    footer{
-      width: 100%;
-      height: 50px;
-      float: left;
-      margin-top: 50px;
-      padding-top: 50px;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
   <h1>Brincando com o Zé Palito</h1>
@@ -123,45 +103,6 @@
   </center>
 </footer>
 
-<script>
-  var svg = document.getElementById("svg");
-  var x = 0;
-  var y = 0;
-  var boneco = document.getElementById("boneco");
-  var clean = function(){
-    boneco.setAttributeNS(null, "transform", "");
-  }
-  var rotate= function(teta){
-    transform("rotate("+teta+","+x+","+y+")");
-  }
-  var transform = function(alter){
-    trans = boneco.getAttributeNS(null, "transform");
-    //alter = "translate(" + (-x) + " " + (-y) + ") " + alter;
-    //alter = alter + " translate(" + x + " " + y + ")";
-    boneco.setAttributeNS(null, "transform", alter + "  " +trans);
-  }
-
-  var alter_origin = function(evt){
-    var  CTM = svg.getScreenCTM();
-    x = (evt.clientX - CTM.e) / CTM.a;
-    y = (evt.clientY - CTM.f) / CTM.d;
-
-    var dot_r = document.getElementById("origin_r");
-    dot_r.setAttributeNS(null, "cx", x);
-    dot_r.setAttributeNS(null, "cy", y);
-  }
-  var mytimeout;
-  var begin = function(alter){
-    if(alter[0]=='r')
-      mytimeout = setInterval("transform('"+alter+","+x+","+y+")')",50);
-    else {
-      mytimeout = setInterval("transform('"+alter+"')",50);
-    }
-  }
-  var end = function(){
-    if(typeof(mytimeout !== 'undefined'))
-      clearTimeout(mytimeout);
-  }
-</script>
+<script type="text/javascript" src = "fun.js"></script>
 </body>
 <html>
