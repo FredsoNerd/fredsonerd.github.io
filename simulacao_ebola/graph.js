@@ -8,10 +8,10 @@ var aux = [0];
 
 // create conected graph for each country
 function populate_countries(n_nodes){
-  for(let i in countries){
+  for(let i in data_sim){
     // generate proportionally to total
     // population in Africa's countries
-    var m = n_nodes * countries[i][POPULATION]/africa[POPULATION];
+    var m = n_nodes * data_cou[i][POPULATION]/data_afr[POPULATION];
     generate_graph(m, i);
 
     // clean data about last population
