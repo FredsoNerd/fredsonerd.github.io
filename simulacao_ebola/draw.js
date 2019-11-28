@@ -5,10 +5,11 @@ function update_draw_countries(){
     // colorise the country given INFected
     var c = data_sim[i][SICK_POPULATION];
     c /= data_sim[i][POPULATION];
-    r = 98 * (2 - c);
+    r = (1 - c) * (c + 0.4) * (500);
     c = 196 * (1 - c);
     country.setAttributeNS(null, "fill", "rgb("+r+","+c+","+c+")");
 
     // alter title to population/infected
+    
   }
 }

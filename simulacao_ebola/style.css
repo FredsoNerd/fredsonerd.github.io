@@ -1,8 +1,9 @@
 #panel{
   width: 1000px;
   height: 500px;
-  padding: 20px 60px;
-  background-color: #f5f5f5;
+  padding: 20px 100px;
+  background-color: #f9f9f9;
+  margin: 40px 0px;
 }
 #charts{
   width: 500px;

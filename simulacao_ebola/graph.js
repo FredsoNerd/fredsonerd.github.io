@@ -17,18 +17,22 @@ function populate_countries(n_nodes){
     // clean data about last population
     nodes = [];
     aux = [0];
+var d = 0;
   }
 }
 
 function generate_graph(n_nodes, country){
   // add new node to graph by preferred attachment
   // the individual is not infected as standard
-  nodes.push(new Node(false, country));
+  var node = new Node(false, country)
+  nodes.push(node);
+  data_sim[country][NODES] = [node];
 
   for(var i = 1; i < n_nodes; i++){
     // initializes the nodes
-    var node = new Node(false, country);
+    node = new Node(false, country);
     nodes.push(node);
+    data_sim[country][NODES].push(node);
 
     // chose first node to atache
     var len = aux.length;
@@ -63,5 +67,23 @@ function populate(node, neighbour, i){
   aux.push(aux[i]);
 }
 
-// geramos 10.000 nodes por padrao
-populate_countries(10000);
+// generate 10.000 nodes by standard
+//populate_countries(1000000);
+populate_countries(1000);
+
+// make the graph as a conected
+for(var i = 0; i < 0.05 * data_sim_afr[POPULATION]; i++){
+  // chose a random node
+  var node_1 = population[Math.floor(Math.random() * population.length)];
+
+  // chose neighbour country
+  var cou = data_cou[node_1.country][NEIGHBOURS].length * Math.random();
+  cou = Math.floor(cou);
+  cou = data_cou[node_1.country][NEIGHBOURS][cou];
+
+  // chose seccond node to atache
+  var ind = Math.floor(data_sim[cou][NODES].length * Math.random());
+  var node_2 = data_sim[cou][NODES][ind];
+
+  populate(node_1, node_2, 0);
+}

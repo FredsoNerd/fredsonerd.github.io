@@ -1,5 +1,5 @@
 var labels = [];
-for(var i = 0; i < 1000; i++)
+for(var i = 0; i < 2000; i++)
 	i % 50 == 0? labels.push(i): labels.push('');
 
 // the objects of chart
@@ -12,15 +12,16 @@ var chart_1 = new Chart(ctx_1, {
 	data: {
 		labels: labels,
 		datasets: [
-		{label: '\% Susce.',data: [], pointRadius: 0, borderColor: '#66dd66aa',
+		{label: '\%Sus.',data: [], pointRadius: 0, borderColor: '#66dd66aa',
 		fill: false, backgroundColor: '#66dd6633', hidden: true},
-		{label: '\% Incub.',data: [], pointRadius: 0, borderColor: '#6600ffaa',
+		{label: '\%Inc.',data: [], pointRadius: 0, borderColor: '#6600ffaa',
 		fill: false, backgroundColor: '#6600ff33'},
-		{label: '\% Infec.',data: [], pointRadius: 0, borderColor: '#ff6666aa',
+		{label: '\%Inf.',data: [], pointRadius: 0, borderColor: '#ff6666aa',
 		fill: false, backgroundColor: '#ff666633'},
-		{label: '\% Isola.',data: [], pointRadius: 0, borderColor: '#666666aa',
+		{label: '\%Iso.',data: [], pointRadius: 0, borderColor: '#666666aa',
 		fill: false, backgroundColor: '#66666633'},
-	/**{label: 'Recu',data: [], pointRadius: 0, backgroundColor: 'rgb(120,0,0)'}**/]
+		{label: '\%Rec.',data: [], pointRadius: 0, borderColor: '#E8E556aa',
+		fill: false, backgroundColor: '#ffeB5E33', hidden: true}]
 	},
 	options: {
 		title: {
@@ -37,7 +38,7 @@ var chart_2 = new Chart(ctx_2, {
 		datasets: [
 		{
 			data: [],
-			label: '\% Infectados (incubação, infectantes ou isolados)',
+			label: '\% Ifectados (incubação, infectantes ou isolados)',
 			pointRadius: 0,
 			backgroundColor: '#ff3333aa'
 		}]
@@ -45,7 +46,7 @@ var chart_2 = new Chart(ctx_2, {
 	options: {
 		title: {
 			display: true,
-			text: 'Percentual da população infectada pelo víruz Ebola na África (dias)'
+			text: 'Percentual da população infectada por víruz Ebola na África (dias)'
 		}
 	}
 });

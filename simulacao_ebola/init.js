@@ -1,7 +1,9 @@
 // chose first node to be sick
 var ind = Math.floor(Math.random() * population.length);
 //population[ind].sick = true;
-population[ind].infect();
+var node = population[ind];
+node.infect();
+alert("Infection begin in " + data_sim[node.country][COUNTRY])
 
 // we draw de initial objects to be dynamically updated
 var namespaceURI = "http://www.w3.org/2000/svg";
