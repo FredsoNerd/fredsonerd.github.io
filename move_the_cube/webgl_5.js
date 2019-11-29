@@ -236,9 +236,9 @@ function draw(ctx, info, buffers, rot){
 ////////////////////////////////////////////////////////////////////////////////
 
 var rot = 0;
-var vx = 0;
-var vy = 0;
-var vz = 0;
+var vx = 1;
+var vy = 1;
+var vz = 1;
 var d = 8;
 var speed = 0.01;
 function render(){
