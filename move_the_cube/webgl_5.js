@@ -167,22 +167,9 @@ function draw(ctx, info, buffers, rot){
   mat4.rotate(
     modelViewMatrix,
     modelViewMatrix,
-    rot * vx,
-    [1,0,0]
+    rot,
+    [vx,vy,vz]
   );
-  mat4.rotate(
-    modelViewMatrix,
-    modelViewMatrix,
-    rot * vy,
-    [0,1,0]
-  );
-  mat4.rotate(
-    modelViewMatrix,
-    modelViewMatrix,
-    rot * vz,
-    [0,0,1]
-  );
-
   {
     var components = 3;
     var type = ctx.FLOAT;
@@ -253,12 +240,13 @@ var vx = 0;
 var vy = 0;
 var vz = 0;
 var d = 8;
+var speed = 0.01;
 function render(){
   draw(ctx, info, buffers, rot);
 
-  rot+=0.01;
+  rot+=parseFloat(speed);
 }
-
+function rotate(element){ speed = element.value;}
 function distance(element) { d = element.value;}
 function xspeed(element){ vx = element.value;}
 function yspeed(element){ vy = element.value;}

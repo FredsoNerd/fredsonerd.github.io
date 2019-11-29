@@ -15,26 +15,33 @@
     <div id = "all">
       <canvas id="panel"></canvas>
       <div id="control">
-        <!-- Velocidade de rotação entorno do eixo x: -->
+        <br/><br/>
+        <!-- componente x do eixo de rotação: -->
         <div class="input">
-          <strong>Velocidade de rotação entorno do eixo x:</strong><br/>
+          <strong>componente X do vetor do eixo de rotação:</strong><br/>
           <input oninput="xspeed(this)" type="range" min="-10" max="10" value="0"/>
         </div>
-        <!-- Velocidade de rotação entorno do eixo x: -->
+        <!-- componente y do eixo de rotação: -->
         <div class="input">
-          <strong>Velocidade de rotação entorno do eixo y:</strong><br/>
+          <strong>componente Y do vetor do eixo de rotação:</strong><br/>
           <input oninput="yspeed(this)" type="range" min="-10" max="10" value="0"/>
         </div>
-        <!-- Velocidade de rotação entorno do eixo x: -->
+        <!-- componente z do eixo de rotação: -->
         <div class="input">
-          <strong>Velocidade de rotação entorno do eixo z:</strong><br/>
+          <strong>componente Z do vetor do eixo de rotação:</strong><br/>
           <input oninput="zspeed(this)" type="range" min="-10" max="10" value="0"/>
         </div>
 
         <br/><br/><br/>
+        <!-- velocidade de rotação do bloco -->
+        <div class="input">
+          <strong>velocidade de rotação:</strong><br/>
+          <input oninput="rotate(this)" type="range" min="-0.1" max="0.1" step="0.001" value="0.01"/>
+        </div>
+
         <!-- distancia da câmera ao bloco -->
         <div class="input">
-          <strong>Distância da câmera:</strong><br/>
+          <strong>distância da câmera:</strong><br/>
           <input oninput="distance(this)" type="range" min="1" max="30" value="8"/>
         </div>
       </div>
