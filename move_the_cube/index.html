@@ -10,9 +10,35 @@
       <small>baseado no <a href = "https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Getting_started_with_WebGL">tutorial</a> de Mozilla</small>
     </h1>
   </center>
-    <!-- painel onde ficam os relatórios -->
+  <!-- painel onde ficam os relatórios -->
   <center>
-    <canvas id="panel"></canvas>
+    <div id = "all">
+      <canvas id="panel"></canvas>
+      <div id="control">
+        <!-- Velocidade de rotação entorno do eixo x: -->
+        <div class="input">
+          <strong>Velocidade de rotação entorno do eixo x:</strong><br/>
+          <input oninput="xspeed(this)" type="range" min="-10" max="10" value="0"/>
+        </div>
+        <!-- Velocidade de rotação entorno do eixo x: -->
+        <div class="input">
+          <strong>Velocidade de rotação entorno do eixo y:</strong><br/>
+          <input oninput="yspeed(this)" type="range" min="-10" max="10" value="0"/>
+        </div>
+        <!-- Velocidade de rotação entorno do eixo x: -->
+        <div class="input">
+          <strong>Velocidade de rotação entorno do eixo z:</strong><br/>
+          <input oninput="zspeed(this)" type="range" min="-10" max="10" value="0"/>
+        </div>
+
+        <br/><br/><br/>
+        <!-- distancia da câmera ao bloco -->
+        <div class="input">
+          <strong>Distância da câmera:</strong><br/>
+          <input oninput="distance(this)" type="range" min="1" max="30" value="8"/>
+        </div>
+      </div>
+    </div>
   </center>
 
   <footer><center><strong>copyright © fredsonerd@2019</strong></center></footer>

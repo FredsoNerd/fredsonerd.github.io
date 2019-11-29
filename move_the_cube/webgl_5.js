@@ -2,9 +2,6 @@
 var panel = document.getElementById("panel");
 var ctx = panel.getContext("webgl");              // o contexti WebGL
 
-ctx.clearColor(0,0,0,1);
-ctx.clear(ctx.COLOR_BUFFER_BIT);
-
 // vertex shader
 var vs_text = `
   attribute vec4 aVertexPosition;
@@ -139,6 +136,7 @@ function init(){
 ////////////////////////////////////////////////////////////////////////////////
 
 function draw(ctx, info, buffers, rot){
+  //ctx.clearColor(0.9,0.9,0.9,1);
   ctx.clearColor(0,0,0,1);
   ctx.clearDepth(1);
   ctx.enable(ctx.DEPTH_TEST);
@@ -164,13 +162,25 @@ function draw(ctx, info, buffers, rot){
   mat4.translate(
     modelViewMatrix,
     modelViewMatrix,
-    [0,0,-8]
+    [0,0,-d]
   );
   mat4.rotate(
     modelViewMatrix,
     modelViewMatrix,
-    rot,
-    [1,1,1]
+    rot * vx,
+    [1,0,0]
+  );
+  mat4.rotate(
+    modelViewMatrix,
+    modelViewMatrix,
+    rot * vy,
+    [0,1,0]
+  );
+  mat4.rotate(
+    modelViewMatrix,
+    modelViewMatrix,
+    rot * vz,
+    [0,0,1]
   );
 
   {
@@ -228,13 +238,6 @@ function draw(ctx, info, buffers, rot){
     false,
     modelViewMatrix
   );
-  /**
-  {
-    const vertexCount = 36;
-    const type = gl.UNSIGNED_SHORT;
-    const offset = 0;
-    gl.drawElements(gl.TRIANGLES, vertexCount, type, offset);
-  }**/
   {
     var count = 36;
     var type = ctx.UNSIGNED_SHORT;
@@ -246,11 +249,20 @@ function draw(ctx, info, buffers, rot){
 ////////////////////////////////////////////////////////////////////////////////
 
 var rot = 0;
+var vx = 0;
+var vy = 0;
+var vz = 0;
+var d = 8;
 function render(){
   draw(ctx, info, buffers, rot);
 
   rot+=0.01;
 }
+
+function distance(element) { d = element.value;}
+function xspeed(element){ vx = element.value;}
+function yspeed(element){ vy = element.value;}
+function zspeed(element){ vz = element.value;}
 
 function main(){
   buffers = init(ctx);
