@@ -62,12 +62,6 @@ function load(ctx, shader_type, source){
   // enviamos o código para o webgl context
   ctx.compileShader(shader);
 
-  if (!ctx.getShaderParameter(shader, ctx.COMPILE_STATUS)) {
-    alert('An error occurred compiling the shaders: ' + ctx.getShaderInfoLog(shader));
-    ctx.deleteShader(shader);
-    return null;
-  }
-
   return shader;
 }
 
@@ -102,11 +96,19 @@ function init(){
   ];
 
   var colors = [];
-
   for(let i in all_color){
-    var color = all_color[i];
-    colors = colors.concat(color,color,color,color);
+    var c = all_color[i];
+    colors = colors.concat(c,c,c,c);
   }
+  /*
+  for(let i in all_color){
+    colors = colors.concat(
+      all_color[Math.floor(Math.random() * all_color.length)],
+      all_color[Math.floor(Math.random() * all_color.length)],
+      all_color[Math.floor(Math.random() * all_color.length)],
+      all_color[Math.floor(Math.random() * all_color.length)]
+    );
+  }*/
 
   var colorBuff = ctx.createBuffer();
   ctx.bindBuffer(ctx.ARRAY_BUFFER, colorBuff);
@@ -146,10 +148,10 @@ function draw(ctx, info, buffers, rot){
 
   var view = Math.PI / 4;                 // angulo de 60º de visao
   var asp = panel.clientWidth / panel.clientHeight;   // razão wid/hei
-  var dNear = 1;                          // distancia minima visivel da camera
+  var dNear = 0.1;                          // distancia minima visivel da camera
   var dFar = 100;                         // distancia maxima no voluma de visao
   var projectionMatrix = mat4.create();
-
+  //mat4.perspective(FoV , gl.viewportWidth / gl.viewportHeight, 0.1, 100.0, pMatrix);
   mat4.perspective(
     projectionMatrix,
     view,
@@ -233,7 +235,6 @@ function draw(ctx, info, buffers, rot){
   }
 }
 
-////////////////////////////////////////////////////////////////////////////////
 
 var rot = 0;
 var vx = 1;

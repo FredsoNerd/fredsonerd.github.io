@@ -5,6 +5,8 @@ var ctx = panel.getContext("webgl");              // o contexti WebGL
 ctx.clearColor(0,0,0,1);
 ctx.clear(ctx.COLOR_BUFFER_BIT);
 
+
+
 /////////////////////////////////////////////
 
 // vertex shader
@@ -12,9 +14,7 @@ var vs_text = "attribute vec4 aVertexPosition;uniform mat4 uModelViewMatrix; uni
 
 // fragment shader
 var fs_text = "void main(){gl_FragColor = vec4(1,1,1,1);}";
-
 var program = makeShader(ctx, vs_text, fs_text);
-
 var info = {
   program : program,
   attribLocations : {
@@ -27,6 +27,7 @@ var info = {
 };
 
 // funcão que retorna um programa shader
+
 function makeShader(ctx, vs_text, fs_text){
   var vs_shader = load(ctx, ctx.VERTEX_SHADER, vs_text);
   var fs_shader = load(ctx, ctx.FRAGMENT_SHADER, fs_text);
@@ -41,6 +42,7 @@ function makeShader(ctx, vs_text, fs_text){
 }
 
 // dado um texto, retorna aquele shader
+
 function load(ctx, shader_type, source){
   var shader = ctx.createShader(shader_type);
   // enviamos o código para o webgl context
@@ -58,6 +60,7 @@ function load(ctx, shader_type, source){
 }
 
 // função que inicializará o buffer
+
 function init(){
     var position_b = ctx.createBuffer();
     ctx.bindBuffer(ctx.ARRAY_BUFFER, position_b);
@@ -108,7 +111,7 @@ function draw(ctx, info, buffers){
   mat4.translate(
     modelViewMatrix,
     modelViewMatrix,
-    [0,0,-4]
+    [0,0,-6]
   );
 
   {
